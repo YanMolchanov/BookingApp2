@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    env_file:
+      - ./.env
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://postgres:iddqd32167@db:5432/test4
+    depends_on:
+      - db
+    restart: always
+    command: bash -c "alembic upgrade head && uvicorn app.main:myapp --host 0.0.0.0 --port 8000 --reload"
+
+
+  db:
+    image: "postgres:15.2"
+    env_file:
+      - ./.env
+    restart: always
+    ports:
+      - "9432:5432"
+    volumes:
+      - /tmp/postgresql:/var/lib/postgresql2
+      - /tmp/postgresql/data:/var/lib/postgresql2/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=iddqd32167
+      - POSTGRES_DB=test4
