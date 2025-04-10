@@ -42,6 +42,7 @@ class ReservationBase(SQLModel):
 class Reservation(ReservationBase, table=True):
     id: int | None = Field(default=None, title="id брони", primary_key=True)
 
+
 class ReservationPublic(ReservationBase):
     id: int
 
