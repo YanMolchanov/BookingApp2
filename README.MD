@@ -8,7 +8,8 @@
 
 ## Запустить сервер через Docker
 
-Просто введите `$ docker compose up -d`, чтобы запустить проект в Docker. Команда `$ docker compose logs -f backend` 
-позволит следить за логами.
+Просто введите `$ docker compose up -d`, чтобы запустить проект в Docker.
 
 Доступ к документации swagger тут [http://localhost:8000/docs](http://localhost:8000/docs).
+
+telegram [@YanMolchanov](https://t.me/YanMolchanov).
